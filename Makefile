@@ -31,8 +31,7 @@ status:
 
 ## Stops running app and server
 stop:
-	bin/docker-compose kill
-	bin/docker-compose down --remove-orphans
+	bin/docker-compose stop
 
 ## Update Foundry to the latest version (will restart the server!)
 update: stop

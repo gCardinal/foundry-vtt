@@ -8,6 +8,8 @@ services:
             FOUNDRY_PASSWORD:
             FOUNDRY_ADMIN_KEY:
             CONTAINER_PRESERVE_CONFIG:
+            FOUNDRY_UID:
+        hostname: ${FOUNDRY_HOSTNAME}
         ports:
             - "${EXPOSED_FOUNDRY_PORT}:30000/tcp"
         restart: unless-stopped
