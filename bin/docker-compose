@@ -1,0 +1,16 @@
+#!/usr/bin/env bash
+# shellcheck disable=SC1090
+
+cwd=$(dirname "$(perl -MCwd -e 'print Cwd::abs_path shift' "${0}")")
+env="${ENV:-local}"
+
+# Get variables from the .env files as well as the .env.${env} and .env.${env}.local files if they exist
+set -o allexport
+source "${cwd}"/../.env
+[[ -f ${cwd}/../.env.local ]] && source "${cwd}"/../.env.local
+[[ -f ${cwd}/../.env.${env} ]] && source "${cwd}"/../.env."${env}"
+[[ -f ${cwd}/../.env.${env}.local ]] && source "${cwd}"/../.env."${env}".local
+set +o allexport
+
+echo "Environment [${env}]"
+docker-compose "$@"

@@ -1,0 +1,15 @@
+version: "3.7"
+
+services:
+    foundry:
+        image: felddy/foundryvtt:release
+        environment:
+            FOUNDRY_USERNAME:
+            FOUNDRY_PASSWORD:
+            FOUNDRY_ADMIN_KEY:
+            CONTAINER_PRESERVE_CONFIG:
+        ports:
+            - "${EXPOSED_FOUNDRY_PORT}:30000/tcp"
+        restart: unless-stopped
+        volumes:
+            - ${FOUNDRY_DATA_VOLUME}:/data
