@@ -5,6 +5,7 @@ NUMBER_OF_CHARACTERS_FOR_COMMAND_COLUMN=20
 
 ## Prints this help.
 help:
+	@echo " "
 	@printf "${color_comment}Usage:${color_reset}\n"
 	@printf " make [target]\n\n"
 	@printf "${color_comment}Available commands:${color_reset}\n"
