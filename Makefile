@@ -3,8 +3,12 @@ include ./config/make/variables.mk
 default: help
 
 ## Backup local Foundry data to a zip file
-backup-data:
-	@zip -r backup-$(shell date +%Y%m%d%H%M%S).zip $(shell pwd)/var/foundry/data
+backup-local-data:
+	@zip -r backup-$(shell date +%Y%m%d%H%M%S).zip var/foundry/data -x "var/foundry/data/Data/systems/*" "var/foundry/data/Data/modules/*"
+
+## Backup server Foundry data to a zip file
+backup-server-data:
+	@ssh foundry 'cd ${FOUNDRY_SERVER_PATH} && make backup-local-data'
 
 ## Open a bash session in the Foundry container
 bash:
@@ -20,10 +24,22 @@ logs:
 
 ## [DESTRUCTIVE] Push local data to the server
 push-data:
-	@rsync -azP ./var foundry:/home/guy/apps/foundry-vtt
+	@rsync -azP ./var foundry:${FOUNDRY_SERVER_PATH}
+
+## Pull data from the server
+pull-data:
+	@rsync -azP foundry:${FOUNDRY_SERVER_PATH}/var .
 
 ## Restart the development server
 restart: stop start
+
+## Restore selected local backup. Run with `BACKUP=backupName.zip make restore-local-data`.
+restore-local-data:
+	unzip -o ${BACKUP}
+
+## Restore selected server backup. Run with `BACKUP=backupName.zip make restore-server-data`.
+restore-server-data:
+	ssh foundry 'cd ${FOUNDRY_SERVER_PATH} && unzip -o ${BACKUP}'
 
 ## Starts Foundry as a background process
 start:
