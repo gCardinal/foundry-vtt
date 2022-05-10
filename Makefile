@@ -10,6 +10,9 @@ backup-local-data: ## Backup local Foundry data to a zip file
 backup-server-data: ## Backup server Foundry data to a zip file
 	@ssh foundry 'cd ${FOUNDRY_SERVER_PATH} && make backup-local-data'
 
+compress-local-images: ## Compress local images using TinyPNG
+	node ./src/compress-images.mjs
+
 push-data: ## [DESTRUCTIVE] Push local data to the server
 	@rsync -azP ./var foundry:${FOUNDRY_SERVER_PATH}
 

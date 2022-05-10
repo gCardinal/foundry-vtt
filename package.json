@@ -1,0 +1,15 @@
+{
+  "dependencies": {
+    "axios": "^0.27.2",
+    "dotenv": "^16.0.0",
+    "eslint": ">=8.6.0",
+    "glob": "^8.0.1",
+    "prettier": "^2.6.2",
+    "tinify": "^1.6.1"
+  },
+  "devDependencies": {
+    "eslint-config-prettier": "^8.5.0",
+    "eslint-config-xo": "^0.40.0",
+    "eslint-plugin-prettier": "^4.0.0"
+  }
+}

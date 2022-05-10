@@ -3,3 +3,4 @@
 var
 *.zip
 *.bk
+node_modules
