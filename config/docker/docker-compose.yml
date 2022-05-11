@@ -15,3 +15,8 @@ services:
         restart: always
         volumes:
             - ${FOUNDRY_DATA_VOLUME}:/data
+
+    fvttoptimizer:
+        build: python
+        volumes:
+            - ${FOUNDRY_DATA_VOLUME}:/app
