@@ -35,3 +35,21 @@ Foundry's data is kept in a local file volume that is, by default `./var/foundry
 We provide a `Makefile` will all the commands and utilities you might need to work with this project. Run `make` to get
 a list of available commands and a small description of that they do. You can also dig into the `Makefile` for even more
 insight.
+
+## Utilities
+
+### Image compression
+To save on disk space and provide faster load times, images can be easily compressed by running
+`make compress-local-images`.
+
+The command will run two scripts. The first is [fvttoptimizer][1] (via a Docker container), which will convert all
+non-webp images in foundry's `Data` directory to webp. More details can be found in the project's [README.md][1].
+
+Once all images are converted to webp, we further compress by running them through [TinyPNG][2]. It's a bit overkill and
+you do need an API key, but it'll save on average a further 5% space.
+
+You can skip the TinyPNG step by setting `COMPRESS_WITH_TINY_PNG=false` in a `.env.local` file. This is also where you
+would want to set your own API key.
+
+[1]: https://github.com/watermelonwolverine/fvttoptimizer
+[2]: https://tinypng.com/

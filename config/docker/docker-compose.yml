@@ -20,3 +20,15 @@ services:
         build: python
         volumes:
             - ${FOUNDRY_DATA_VOLUME}:/app
+
+    node:
+        build: node
+        environment:
+            TINY_PNG_API_KEY:
+            IMAGE_FILE_GLOB:
+            COMPRESSED_IMAGE_CACHE_FILE:
+            COMPRESS_WITH_TINY_PNG:
+        init: true
+        volumes:
+            - ../../:/app
+        working_dir: /app

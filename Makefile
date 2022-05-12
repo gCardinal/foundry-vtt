@@ -12,6 +12,7 @@ backup-server-data: ## Backup server Foundry data to a zip file
 
 compress-local-images: ## Compress local images using fvttoptimizer. Foundry WILL be stopped. PLEASE MAKE A BACKUP BEFOREHAND.
 	bin/docker-compose run --rm fvttoptimizer
+	bin/docker-compose run --rm node src/compress-images.mjs
 
 push-data: ## [DESTRUCTIVE] Push local data to the server
 	@rsync -azP ./var foundry:${FOUNDRY_SERVER_PATH}
