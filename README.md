@@ -3,6 +3,8 @@ Foundry VTT
 
 Docker-based Foundry VTT installation.
 
+> :warning: Please not that when using a docker container for your Foundry installation you will not receive official support from Foundry VTT and will instead be directed to the container creator.
+
 ## Install
 1. Clone this repository on the server.
 2. Create a `.env.local` file to configure sensitive information (empty variables in `.env`).
