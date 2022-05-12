@@ -39,6 +39,10 @@ insight.
 ## Utilities
 
 ### Image compression
+
+> :warning: **Backup your data**: While 99.99% safe, this utility will **overwrite** your data. It's always safer to run
+> a backup before using this utility. Run `make backup-local-data` to do so.
+
 To save on disk space and provide faster load times, images can be easily compressed by running
 `make compress-local-images`.
 
