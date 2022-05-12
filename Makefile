@@ -10,8 +10,8 @@ backup-local-data: ## Backup local Foundry data to a zip file
 backup-server-data: ## Backup server Foundry data to a zip file
 	@ssh foundry 'cd ${FOUNDRY_SERVER_PATH} && make backup-local-data'
 
-compress-local-images: ## Compress local images using fvttoptimizer
-	bin/docker-compose run --rm fvttoptimizer fvttoptimizer --verbose-debug --recursive ./Barney.jpg
+compress-local-images: ## Compress local images using fvttoptimizer. Foundry WILL be stopped. PLEASE MAKE A BACKUP BEFOREHAND.
+	bin/docker-compose run --rm fvttoptimizer
 
 push-data: ## [DESTRUCTIVE] Push local data to the server
 	@rsync -azP ./var foundry:${FOUNDRY_SERVER_PATH}
