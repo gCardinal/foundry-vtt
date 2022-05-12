@@ -26,7 +26,15 @@ while information is still on the server itself, at least you're not committing 
 *cloud-hosted* repository!
 
 ## Updating
-Run `make update`. **Be aware**, Foundry ***will*** be stopped to execute the update.
+
+> :warning: Foundry ***will*** be stopped to execute the update.
+
+1. Make note of the current version (in `config/docker/docker-compose.yml`).
+2. Backup your data `make backup-local-data`.
+3. In `config/docker/docker-compose.yml`, change the version number of the `felddy/foundryvtt` image to the version you
+   want to update to.
+4. Run `make update`.
+5. Restart the container (`make start`).
 
 ## Data
 Foundry's data is kept in a local file volume that is, by default `./var/foundry/data`.
